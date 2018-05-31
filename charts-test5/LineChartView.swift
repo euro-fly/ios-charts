@@ -15,8 +15,8 @@ class LineChart: UIView {
     var lineDataEntry: [ChartDataEntry] = []
     
     var xAxis = [String]()
-    var yAxis = [String]()
-    
+    var yAxis = [[String]]()
+
     var delegate: GetChartData! {
         didSet {
             populateData()
@@ -37,35 +37,41 @@ class LineChart: UIView {
         lineChartView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         lineChartView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         lineChartView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        
         lineChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: ChartEasingOption.easeInSine)
         setLineChart(dataPoints: xAxis, values: yAxis)
     }
     
-    func setLineChart(dataPoints: [String], values: [String]) {
+    func setLineChart(dataPoints: [String], values: [[String]]) {
         lineChartView.noDataTextColor = UIColor.white
         lineChartView.noDataText = "NO DATA"
         lineChartView.backgroundColor = UIColor.white
         
-        for i in 0..<dataPoints.count {
+        /* for i in 0..<dataPoints.count {
             let dataPoint = ChartDataEntry(x: Double(i), y: Double(values[i])!)
             lineDataEntry.append(dataPoint)
-        }
-        
-        let chartDataSet = LineChartDataSet(values: lineDataEntry, label: "Weight")
-        let chartData = LineChartData()
-        chartData.addDataSet(chartDataSet)
-        chartData.setDrawValues(true)
-        chartDataSet.colors = [UIColor.blue]
-        chartDataSet.setCircleColor(UIColor.blue)
-        chartDataSet.circleHoleColor = UIColor.blue
-        chartDataSet.circleRadius = 4.0
-        
+        } */
         let gradientColors = [UIColor.purple.cgColor, UIColor.clear.cgColor] as CFArray
         let colorLocations: [CGFloat] = [1.0, 0.0]
         guard let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradientColors, locations: colorLocations) else { print("gradient error"); return }
-        chartDataSet.fill = Fill.fillWithLinearGradient(gradient, angle: 90.0)
-        chartDataSet.drawFilledEnabled = true
+        let labels: [String] = ["Weight", "Fat"]
+        let chartData = LineChartData()
+        for i in 0..<values.count {
+            lineDataEntry = []
+            for j in 0..<dataPoints.count {
+                let dataPoint = ChartDataEntry(x: Double(j), y: Double(values[i][j])!)
+                lineDataEntry.append(dataPoint)
+            }
+            let chartDataSet = LineChartDataSet(values: lineDataEntry, label: labels[i])
+            chartData.addDataSet(chartDataSet)
+            chartDataSet.colors = [UIColor.blue]
+            chartDataSet.setCircleColor(UIColor.blue)
+            chartDataSet.circleHoleColor = UIColor.blue
+            chartDataSet.circleRadius = 4.0
+            chartDataSet.fill = Fill.fillWithLinearGradient(gradient, angle: 90.0)
+            chartDataSet.drawFilledEnabled = true
+        }
+        
+        chartData.setDrawValues(true)
         
         let formatter: ChartFormatter = ChartFormatter()
         formatter.setValues(values: dataPoints)
@@ -82,7 +88,8 @@ class LineChart: UIView {
         
         lineChartView.data = chartData
         
-        
     }
+    
+    
     
 }
