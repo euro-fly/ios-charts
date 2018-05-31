@@ -15,6 +15,10 @@
 		1607456520BFC097009F292D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1607456420BFC097009F292D /* main.m */; };
 		1607456F20BFC097009F292D /* charts_test5Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1607456E20BFC097009F292D /* charts_test5Tests.m */; };
 		1607457A20BFC097009F292D /* charts_test5UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1607457920BFC097009F292D /* charts_test5UITests.m */; };
+		16DCD38D20BFC35400466B9C /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16DCD38A20BFC34B00466B9C /* Charts.framework */; };
+		16DCD38E20BFC35400466B9C /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 16DCD38A20BFC34B00466B9C /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		16DCD39420BFC37A00466B9C /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DCD39320BFC37A00466B9C /* LineChartView.swift */; };
+		16DCD39620BFC3F600466B9C /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DCD39520BFC3F600466B9C /* ChartViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,7 +36,42 @@
 			remoteGlobalIDString = 1607455120BFC07C009F292D;
 			remoteInfo = "charts-test5";
 		};
+		16DCD38920BFC34B00466B9C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16DCD38420BFC34B00466B9C /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 65AD9E95D9ED4DC0BD73A743;
+			remoteInfo = Charts;
+		};
+		16DCD38B20BFC34B00466B9C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16DCD38420BFC34B00466B9C /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1CBBC58C6CE1EBEE9852CE41;
+			remoteInfo = ChartsTests;
+		};
+		16DCD38F20BFC35400466B9C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16DCD38420BFC34B00466B9C /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A58A4ED274A941CA248EA921;
+			remoteInfo = Charts;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		16DCD39120BFC35400466B9C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				16DCD38E20BFC35400466B9C /* Charts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1607455220BFC07C009F292D /* charts-test5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "charts-test5.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,6 +90,10 @@
 		1607457520BFC097009F292D /* charts-test5UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "charts-test5UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1607457920BFC097009F292D /* charts_test5UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = charts_test5UITests.m; sourceTree = "<group>"; };
 		1607457B20BFC097009F292D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		16DCD38420BFC34B00466B9C /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../Downloads/Charts-master/Charts.xcodeproj"; sourceTree = "<group>"; };
+		16DCD39220BFC37A00466B9C /* charts-test5-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "charts-test5-Bridging-Header.h"; sourceTree = "<group>"; };
+		16DCD39320BFC37A00466B9C /* LineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
+		16DCD39520BFC3F600466B9C /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16DCD38D20BFC35400466B9C /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +125,7 @@
 		1607454920BFC07C009F292D = {
 			isa = PBXGroup;
 			children = (
+				16DCD38420BFC34B00466B9C /* Charts.xcodeproj */,
 				1607455420BFC07C009F292D /* charts-test5 */,
 				1607456D20BFC097009F292D /* charts-test5Tests */,
 				1607457820BFC097009F292D /* charts-test5UITests */,
@@ -110,6 +155,9 @@
 				1607456020BFC097009F292D /* LaunchScreen.storyboard */,
 				1607456320BFC097009F292D /* Info.plist */,
 				1607456420BFC097009F292D /* main.m */,
+				16DCD39320BFC37A00466B9C /* LineChartView.swift */,
+				16DCD39520BFC3F600466B9C /* ChartViewController.swift */,
+				16DCD39220BFC37A00466B9C /* charts-test5-Bridging-Header.h */,
 			);
 			path = "charts-test5";
 			sourceTree = "<group>";
@@ -132,6 +180,15 @@
 			path = "charts-test5UITests";
 			sourceTree = "<group>";
 		};
+		16DCD38520BFC34B00466B9C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				16DCD38A20BFC34B00466B9C /* Charts.framework */,
+				16DCD38C20BFC34B00466B9C /* ChartsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -142,10 +199,12 @@
 				1607454E20BFC07C009F292D /* Sources */,
 				1607454F20BFC07C009F292D /* Frameworks */,
 				1607455020BFC07C009F292D /* Resources */,
+				16DCD39120BFC35400466B9C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				16DCD39020BFC35400466B9C /* PBXTargetDependency */,
 			);
 			name = "charts-test5";
 			productName = "charts-test5";
@@ -199,6 +258,7 @@
 				TargetAttributes = {
 					1607455120BFC07C009F292D = {
 						CreatedOnToolsVersion = 9.3.1;
+						LastSwiftMigration = 0930;
 					};
 					1607456920BFC097009F292D = {
 						CreatedOnToolsVersion = 9.3.1;
@@ -221,6 +281,12 @@
 			mainGroup = 1607454920BFC07C009F292D;
 			productRefGroup = 1607455320BFC07C009F292D /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 16DCD38520BFC34B00466B9C /* Products */;
+					ProjectRef = 16DCD38420BFC34B00466B9C /* Charts.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				1607455120BFC07C009F292D /* charts-test5 */,
@@ -229,6 +295,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		16DCD38A20BFC34B00466B9C /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 16DCD38920BFC34B00466B9C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		16DCD38C20BFC34B00466B9C /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = 16DCD38B20BFC34B00466B9C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1607455020BFC07C009F292D /* Resources */ = {
@@ -265,6 +348,8 @@
 				1607455A20BFC07C009F292D /* ViewController.m in Sources */,
 				1607456520BFC097009F292D /* main.m in Sources */,
 				1607455720BFC07C009F292D /* AppDelegate.m in Sources */,
+				16DCD39420BFC37A00466B9C /* LineChartView.swift in Sources */,
+				16DCD39620BFC3F600466B9C /* ChartViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,6 +381,11 @@
 			isa = PBXTargetDependency;
 			target = 1607455120BFC07C009F292D /* charts-test5 */;
 			targetProxy = 1607457620BFC097009F292D /* PBXContainerItemProxy */;
+		};
+		16DCD39020BFC35400466B9C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Charts;
+			targetProxy = 16DCD38F20BFC35400466B9C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -432,7 +522,9 @@
 		1607457F20BFC097009F292D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "charts-test5/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -441,6 +533,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mycompany.charts-test5";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "charts-test5/charts-test5-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -448,7 +543,9 @@
 		1607458020BFC097009F292D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "charts-test5/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -457,6 +554,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mycompany.charts-test5";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "charts-test5/charts-test5-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -464,6 +563,7 @@
 		1607458220BFC097009F292D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "charts-test5Tests/Info.plist";
@@ -482,6 +582,7 @@
 		1607458320BFC097009F292D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "charts-test5Tests/Info.plist";
@@ -500,6 +601,7 @@
 		1607458520BFC097009F292D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "charts-test5UITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -517,6 +619,7 @@
 		1607458620BFC097009F292D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "charts-test5UITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
