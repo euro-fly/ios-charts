@@ -102,6 +102,7 @@ class LineChart: UIView, IAxisValueFormatter {
         lineChartView.chartDescription?.enabled = false
         lineChartView.legend.enabled = false
         lineChartView.rightAxis.enabled = true
+        lineChartView.rightAxis.axisMaximum = 100.0
         lineChartView.leftAxis.drawGridLinesEnabled = false
         lineChartView.leftAxis.drawLabelsEnabled = true
         lineChartView.data = chartData
