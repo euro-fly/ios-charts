@@ -52,6 +52,7 @@ class LineChart: UIView {
         } */
         let gradientColors = [UIColor.purple.cgColor, UIColor.clear.cgColor] as CFArray
         let colorLocations: [CGFloat] = [1.0, 0.0]
+        let colors: [UIColor] = [UIColor.blue, UIColor.green]
         guard let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradientColors, locations: colorLocations) else { print("gradient error"); return }
         let labels: [String] = ["Weight", "Fat"]
         let chartData = LineChartData()
@@ -63,15 +64,16 @@ class LineChart: UIView {
             }
             let chartDataSet = LineChartDataSet(values: lineDataEntry, label: labels[i])
             chartData.addDataSet(chartDataSet)
-            chartDataSet.colors = [UIColor.blue]
-            chartDataSet.setCircleColor(UIColor.blue)
-            chartDataSet.circleHoleColor = UIColor.blue
-            chartDataSet.circleRadius = 4.0
+            chartDataSet.colors = [colors[i]]
+            chartDataSet.lineWidth = 2.0
+            chartDataSet.setCircleColor(colors[i])
+            chartDataSet.circleHoleColor = colors[i]
+            chartDataSet.circleRadius = 0.0
             chartDataSet.fill = Fill.fillWithLinearGradient(gradient, angle: 90.0)
             chartDataSet.drawFilledEnabled = true
         }
         
-        chartData.setDrawValues(true)
+        chartData.setDrawValues(false)
         
         let formatter: ChartFormatter = ChartFormatter()
         formatter.setValues(values: dataPoints)
@@ -85,8 +87,10 @@ class LineChart: UIView {
         lineChartView.rightAxis.enabled = false
         lineChartView.leftAxis.drawGridLinesEnabled = false
         lineChartView.leftAxis.drawLabelsEnabled = true
-        
         lineChartView.data = chartData
+        
+        
+        
         
     }
     
