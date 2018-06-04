@@ -13,6 +13,7 @@ open class BalloonMarker: MarkerImage
     open var insets = UIEdgeInsets()
     open var minimumSize = CGSize()
     
+    
     fileprivate var label: String?
     fileprivate var _labelSize: CGSize = CGSize()
     fileprivate var _paragraphStyle: NSMutableParagraphStyle?
@@ -49,9 +50,9 @@ open class BalloonMarker: MarkerImage
         
         var rect = CGRect(
             origin: CGPoint(
-//                x: point.x + offset.x,
-//                y: point.y + offset.y),
-                x: 250, y: 10),
+                x: point.x + offset.x,
+//                y: 0,
+                y: 0),
             size: size)
         rect.origin.x -= size.width / 2.0
         rect.origin.y -= size.height
@@ -60,33 +61,17 @@ open class BalloonMarker: MarkerImage
         
         if let color = color
         {
-            context.setFillColor(color.cgColor)
+            //context.setFillColor(color.cgColor)
+            context.setStrokeColor(color.cgColor)
+            context.setLineWidth(2.0)
             context.beginPath()
             context.move(to: CGPoint(
-                x: rect.origin.x,
-                y: rect.origin.y))
+                x: point.x + offset.x,
+                y: 0.0))
             context.addLine(to: CGPoint(
-                x: rect.origin.x + rect.size.width,
-                y: rect.origin.y))
-            context.addLine(to: CGPoint(
-                x: rect.origin.x + rect.size.width,
-                y: rect.origin.y + rect.size.height - arrowSize.height))
-            context.addLine(to: CGPoint(
-                x: rect.origin.x + (rect.size.width + arrowSize.width) / 2.0,
-                y: rect.origin.y + rect.size.height - arrowSize.height))
-            context.addLine(to: CGPoint(
-                x: rect.origin.x + rect.size.width / 2.0,
-                y: rect.origin.y + rect.size.height))
-            context.addLine(to: CGPoint(
-                x: rect.origin.x + (rect.size.width - arrowSize.width) / 2.0,
-                y: rect.origin.y + rect.size.height - arrowSize.height))
-            context.addLine(to: CGPoint(
-                x: rect.origin.x,
-                y: rect.origin.y + rect.size.height - arrowSize.height))
-            context.addLine(to: CGPoint(
-                x: rect.origin.x,
-                y: rect.origin.y))
-            context.fillPath()
+                x: point.x + offset.x,
+                y: UIScreen.main.bounds.height))
+            context.drawPath(using: .fillStroke)
         } // TODO: modify this to add a line through both datasets
         
         rect.origin.y += self.insets.top
@@ -94,7 +79,7 @@ open class BalloonMarker: MarkerImage
         
         UIGraphicsPushContext(context)
         
-        label.draw(in: rect, withAttributes: _drawAttributes)
+        label.draw(in: CGRect(x: 50, y: 50, width: 50, height: 50), withAttributes: _drawAttributes)
         
         UIGraphicsPopContext()
         
@@ -103,7 +88,11 @@ open class BalloonMarker: MarkerImage
     
     open override func refreshContent(entry: ChartDataEntry, highlight: Highlight)
     {
-        setLabel(String(entry.y))
+        setLabel(String(entry.x))
+    }
+    
+    open func getLabel() -> String? {
+        return label
     }
     
     open func setLabel(_ newLabel: String)
