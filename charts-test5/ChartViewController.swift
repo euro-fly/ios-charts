@@ -76,19 +76,16 @@ class ChartViewController: UIViewController, GetChartData {
     }
     
     @objc func buttonClicked1(_ sender: UIButton) {
-        print("Button press 1")
         populateChartData()
         RefreshChart()
     }
     
     @objc func buttonClicked2(_ sender: UIButton) {
-        print("Button press 2")
         populateChartDataTwo()
         RefreshChart()
     }
     
     @objc func buttonClicked3(_ sender: UIButton) {
-        print("Button press 2")
         populateChartDataThree()
         RefreshChart()
     }
@@ -108,7 +105,7 @@ class ChartViewController: UIViewController, GetChartData {
     func addButtons() { //NOTE: figure out how to do this without specifying the positions manually
         let button1 = UIButton.init(type: .roundedRect)
         button1.frame = CGRect(x:self.view.frame.width * 0.20, y: self.view.frame.height * 0.10, width: self.view.frame.width * 0.20, height: 50)
-        button1.setTitle("24h View", for: .normal)
+        button1.setTitle("30d View", for: .normal)
         button1.addTarget(self, action: #selector(buttonClicked1(_ :)), for: .touchUpInside)
         self.view.addSubview(button1)
         
