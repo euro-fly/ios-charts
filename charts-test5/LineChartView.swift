@@ -18,14 +18,29 @@ class LineChart: UIView, IAxisValueFormatter {
     var yAxis = [[String]]()
     
     public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-        let date = NSCalendar.current.date(byAdding: .day, value: Int(Int(xAxis[Int(value)])! * -1), to: NSDate() as Date)
+        var date: Date = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
+        if (xAxis.count == 7)  // if it's a weekly view
+        {
+            date = NSCalendar.current.date(byAdding: .day, value: Int(Int(xAxis[Int(value)])! * -1), to: NSDate() as Date) as Date!
+            dateFormatter.dateFormat = "MM月dd日"
+        }
+        else if (xAxis.count == 12) // if it's a yearly view
+        {
+            date = NSCalendar.current.date(byAdding: .month, value: Int(Int(xAxis[Int(value)])! * -1), to: NSDate() as Date) as Date!
+            dateFormatter.dateFormat = "MM月"
+        }
+        else if (xAxis.count == 30) {
+            date = NSCalendar.current.date(byAdding: .day, value: Int(Int(xAxis[Int(value)])! * -1), to: NSDate() as Date) as Date!
+            dateFormatter.dateFormat = "MM月dd日"
+        }
         
-        dateFormatter.dateFormat = "MM月dd日"
+        
+        
         //print() // 2001/01/0
-        return dateFormatter.string(from: date!)
+        return dateFormatter.string(from: date)
     }
     public func setValues(values: [String]) {
         self.xAxis = values
