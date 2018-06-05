@@ -16,6 +16,8 @@ protocol GetChartData {
     var yAxis: [[String]] {get set}
 }
 
+
+
 @objc class ChartViewController: UIViewController, GetChartData {
     var xAxis = [String]()
     var yAxis = [[String]]()

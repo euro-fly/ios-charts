@@ -17,6 +17,15 @@ class LineChart: UIView, IAxisValueFormatter {
     var xAxis = [String]()
     var yAxis = [[String]]()
     
+    func UIColorFromRGB(rgbValue: UInt) -> UIColor {
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
+    }
+    
     public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         var date: Date = Date()
         let dateFormatter = DateFormatter()
@@ -75,7 +84,7 @@ class LineChart: UIView, IAxisValueFormatter {
         lineChartView.noDataText = "NO DATA"
         lineChartView.backgroundColor = UIColor.white
         
-        let colors: [UIColor] = [UIColor.blue, UIColor.purple]
+        let colors: [UIColor] = [UIColorFromRGB(rgbValue: 0x111E6C), UIColorFromRGB(rgbValue: 0x0F52BA)]
         //guard let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradientColors, locations: colorLocations) else { print("gradient error"); return }
         let labels: [String] = ["Weight", "Fat"]
         let axes: [Charts.ChartYAxis.AxisDependency] = [Charts.YAxis.AxisDependency.left, Charts.YAxis.AxisDependency.right]
