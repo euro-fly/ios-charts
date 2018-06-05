@@ -16,7 +16,7 @@ protocol GetChartData {
     var yAxis: [[String]] {get set}
 }
 
-class ChartViewController: UIViewController, GetChartData {
+@objc class ChartViewController: UIViewController, GetChartData {
     var xAxis = [String]()
     var yAxis = [[String]]()
     
@@ -44,8 +44,8 @@ class ChartViewController: UIViewController, GetChartData {
     //todo: let this be the monthly view
     func populateChartData() { // any number of data sets can be specified in this case.
         xAxis = ["29", "28", "27", "26", "25", "24", "23", "22", "21", "20", "19", "18", "17", "16", "15", "14", "13", "12", "11", "10", "9", "8", "7", "6", "5", "4", "3", "2", "1", "0" ]
-        let yAxis1 = ["76", "78", "79", "71", "70", "66", "61", "50", "66", "63", "65", "56", "58", "59", "77", "78", "79", "65", "54", "75", "62", "69", "62", "50", "54", "51", "74", "62", "54", "80"]
-        let yAxis2 = ["9", "25", "27", "23", "24", "7", "27", "26", "27", "29", "5", "17", "22", "9", "29", "20", "9", "18", "7", "11", "26", "25", "29", "29", "13", "26", "15", "25", "18", "24"]
+        let yAxis1 = ["56", "56", "54", "56", "54", "53", "59", "51", "58", "56", "50", "58", "55", "56", "50", "58", "59", "51", "58", "51", "53", "52", "56", "56", "52", "52", "59", "53", "55", "52"]
+        let yAxis2 = ["23", "26", "29", "28", "25", "28", "21", "24", "22", "26", "22", "23", "21", "23", "22", "22", "29", "22", "26", "22", "22", "23", "20", "23", "28", "25", "24", "24", "27", "24"]
         yAxis = [yAxis1, yAxis2]
         self.getChartData(with: xAxis, values: yAxis)
     }
@@ -53,8 +53,8 @@ class ChartViewController: UIViewController, GetChartData {
     //todo: let this be the weekly view
     func populateChartDataTwo() { // any number of data sets can be specified in this case.
         xAxis = ["6", "5", "4", "3", "2", "1", "0"]
-        let yAxis1 = ["68", "66", "52", "61", "66", "63", "60"]
-        let yAxis2 = ["7", "13", "29", "14", "14", "29", "26"]
+        let yAxis1 = ["54", "52", "52", "54", "57", "57", "50"]
+        let yAxis2 = ["23", "24", "21", "21", "25", "29", "29"]
         yAxis = [yAxis1, yAxis2]
         self.getChartData(with: xAxis, values: yAxis)
     }
@@ -62,8 +62,8 @@ class ChartViewController: UIViewController, GetChartData {
     //todo: let this be the yearly view
     func populateChartDataThree() { // any number of data sets can be specified in this case.
         xAxis = ["11", "10", "9", "8", "7", "6", "5", "4", "3", "2", "1", "0"]
-        let yAxis1 = ["50", "64", "59", "74", "66", "62", "62", "78", "67", "73", "60", "70"]
-        let yAxis2 = ["29", "20", "25", "26", "6", "9", "8", "16", "7", "9", "8", "10"]
+        let yAxis1 = ["50", "59", "52", "50", "50", "56", "57", "60", "58", "51", "51", "51"]
+        let yAxis2 = ["26", "25", "26", "29", "23", "24", "25", "26", "24", "24", "30", "28"]
         yAxis = [yAxis1, yAxis2]
         self.getChartData(with: xAxis, values: yAxis)
     }
@@ -92,6 +92,7 @@ class ChartViewController: UIViewController, GetChartData {
         marker.minimumSize = CGSize(width: 75.0, height: 35.0)
         lineChart.lineChartView.marker = marker
         marker.chartView = lineChart.lineChartView
+        lineChart.lineChartView.highlightValue(x: 0.0, dataSetIndex: 0)
         self.view.addSubview(lineChart)
         addButtons()
     }
@@ -114,6 +115,16 @@ class ChartViewController: UIViewController, GetChartData {
         button3.setTitle("一年間", for: .normal)
         button3.addTarget(self, action: #selector(buttonClicked3(_ :)), for: .touchUpInside)
         self.view.addSubview(button3)
+    }
+    
+    func addLabel(marker: BalloonMarker) {
+        let weightPanel = UILabel.init(frame: CGRect(x:self.view.frame.width * 0.33, y: 0.0, width: self.view.frame.width * 0.20, height: 50))
+        let fatPanel = UILabel.init(frame: CGRect(x:self.view.frame.width * 0.66, y: 0.0, width: self.view.frame.width * 0.20, height: 50))
+        weightPanel.text = marker.bodyWeight
+        fatPanel.text = marker.bodyFat
+        self.view.addSubview(weightPanel)
+        self.view.addSubview(fatPanel)
+        print(weightPanel.text)
     }
     
     func getChartData(with dataPoints: [String], values: [[String]]) {

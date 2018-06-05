@@ -75,12 +75,6 @@ class LineChart: UIView, IAxisValueFormatter {
         lineChartView.noDataText = "NO DATA"
         lineChartView.backgroundColor = UIColor.white
         
-        /* for i in 0..<dataPoints.count {
-            let dataPoint = ChartDataEntry(x: Double(i), y: Double(values[i])!)
-            lineDataEntry.append(dataPoint)
-        } */
-        //let gradientColors = [UIColor.purple.cgColor, UIColor.clear.cgColor] as CFArray
-        //let colorLocations: [CGFloat] = [1.0, 0.0]
         let colors: [UIColor] = [UIColor.blue, UIColor.purple]
         //guard let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradientColors, locations: colorLocations) else { print("gradient error"); return }
         let labels: [String] = ["Weight", "Fat"]
@@ -114,10 +108,14 @@ class LineChart: UIView, IAxisValueFormatter {
         lineChartView.xAxis.drawGridLinesEnabled = false
         lineChartView.xAxis.valueFormatter = xAxis.valueFormatter
         lineChartView.xAxis.setLabelCount(5, force: true)
+        lineChartView.rightAxis.drawLimitLinesBehindDataEnabled = true
+        lineChartView.rightAxis.addLimitLine(ChartLimitLine(limit: chartData.dataSets[1].yMin - 5, label: "LABEL"))
+        lineChartView.leftAxis.addLimitLine(ChartLimitLine(limit: chartData.dataSets[0].yMin - 5, label: "label 2"))
+        lineChartView.leftAxis.drawLimitLinesBehindDataEnabled = true
         lineChartView.chartDescription?.enabled = false
         lineChartView.legend.enabled = false
         lineChartView.rightAxis.enabled = true
-        lineChartView.rightAxis.axisMaximum = 100.0
+        lineChartView.rightAxis.axisMaximum = chartData.dataSets[1].yMax + 10
         lineChartView.leftAxis.drawGridLinesEnabled = false
         lineChartView.leftAxis.drawLabelsEnabled = true
         lineChartView.data = chartData

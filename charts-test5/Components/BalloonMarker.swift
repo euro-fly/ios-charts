@@ -13,6 +13,9 @@ open class BalloonMarker: MarkerImage
     open var insets = UIEdgeInsets()
     open var minimumSize = CGSize()
     
+    open var bodyWeight: String? = "0.0"
+    open var bodyFat: String? = "0.0"
+    
     
     fileprivate var label: String?
     fileprivate var _labelSize: CGSize = CGSize()
@@ -58,7 +61,6 @@ open class BalloonMarker: MarkerImage
         rect.origin.y -= size.height
         
         context.saveGState()
-        
         if let color = color
         {
             //context.setFillColor(color.cgColor)
@@ -72,7 +74,7 @@ open class BalloonMarker: MarkerImage
                 x: point.x + offset.x,
                 y: UIScreen.main.bounds.height))
             context.drawPath(using: .fillStroke)
-        } // TODO: modify this to add a line through both datasets
+        } // TODO: draw circles through data points...?
         
         rect.origin.y += self.insets.top
         rect.size.height -= self.insets.top + self.insets.bottom
@@ -92,6 +94,8 @@ open class BalloonMarker: MarkerImage
         let set2 = chartView?.data?.dataSets[1]
         let setEntry1 = set1?.entryForIndex(Int(entry.x))
         let setEntry2 = set2?.entryForIndex(Int(entry.x))
+        bodyWeight = String(setEntry1?.y ?? 0.0)
+        bodyFat = String(setEntry2?.y ?? 0.0)
         setLabel(String("体量：\(setEntry1?.y ?? 0.0)kg\n 体脂肪率：\(setEntry2?.y ?? 0.0)%"))
     }
     
