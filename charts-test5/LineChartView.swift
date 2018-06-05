@@ -102,20 +102,31 @@ class LineChart: UIView, IAxisValueFormatter {
         
         chartData.setDrawValues(false)
         
+        
+        //todo: refactor all of this.
         let xAxis = XAxis()
         xAxis.valueFormatter = self
         lineChartView.xAxis.labelPosition = .bottom
         lineChartView.xAxis.drawGridLinesEnabled = false
         lineChartView.xAxis.valueFormatter = xAxis.valueFormatter
         lineChartView.xAxis.setLabelCount(5, force: true)
+        lineChartView.xAxis.labelTextColor = UIColor.gray
+        lineChartView.xAxis.labelFont = UIFont(name: "Helvetica", size: 8)!
         lineChartView.rightAxis.drawLimitLinesBehindDataEnabled = true
-        lineChartView.rightAxis.addLimitLine(ChartLimitLine(limit: chartData.dataSets[1].yMin - 5, label: "LABEL"))
-        lineChartView.leftAxis.addLimitLine(ChartLimitLine(limit: chartData.dataSets[0].yMin - 5, label: "label 2"))
+        let bodyFatTargetLine = ChartLimitLine(limit: chartData.dataSets[1].yMin - 5, label: "体脂肪率")
+        let bodyWeightTargetLine = ChartLimitLine(limit: chartData.dataSets[0].yMin - 5, label: "体量") //体量
+        bodyFatTargetLine.lineDashLengths = [0.5]
+        bodyWeightTargetLine.lineDashLengths = [0.5]
+        bodyFatTargetLine.lineColor = UIColor.purple
+        bodyWeightTargetLine.lineColor = UIColor.blue
+        lineChartView.rightAxis.addLimitLine(bodyFatTargetLine)
+        lineChartView.leftAxis.addLimitLine(bodyWeightTargetLine)
         lineChartView.leftAxis.drawLimitLinesBehindDataEnabled = true
         lineChartView.chartDescription?.enabled = false
         lineChartView.legend.enabled = false
         lineChartView.rightAxis.enabled = true
         lineChartView.rightAxis.axisMaximum = chartData.dataSets[1].yMax + 10
+        lineChartView.rightAxis.axisMinimum = 5.0
         lineChartView.leftAxis.drawGridLinesEnabled = false
         lineChartView.leftAxis.drawLabelsEnabled = true
         lineChartView.data = chartData
