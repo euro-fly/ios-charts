@@ -20,16 +20,6 @@ class ChartViewController: UIViewController, GetChartData {
     var xAxis = [String]()
     var yAxis = [[String]]()
     
-   
-    @IBAction func myButton1(_ sender: Any) {
-        print("Button press 1")
-        populateChartData()
-        RefreshChart()
-    }
-    @IBAction func myButton2(_ sender: Any) {
-        
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         populateChartData()
@@ -95,14 +85,13 @@ class ChartViewController: UIViewController, GetChartData {
         RefreshChart()
     }
     
-    
-    
     func lineChart() {
         let lineChart = LineChart(frame: CGRect(x: 0.0, y: self.view.frame.height * 0.15, width: self.view.frame.width, height: self.view.frame.height * 0.85))
         lineChart.delegate = self
         let marker: BalloonMarker = BalloonMarker(color: UIColor.blue, font: UIFont(name: "Helvetica", size: 12.0)!, textColor: UIColor.black, insets: UIEdgeInsetsMake(7.0, 7.0, 25.0, 7.0))
         marker.minimumSize = CGSize(width: 75.0, height: 35.0)
         lineChart.lineChartView.marker = marker
+        marker.chartView = lineChart.lineChartView
         self.view.addSubview(lineChart)
         addButtons()
     }

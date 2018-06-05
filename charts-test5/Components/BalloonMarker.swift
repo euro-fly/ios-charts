@@ -79,7 +79,7 @@ open class BalloonMarker: MarkerImage
         
         UIGraphicsPushContext(context)
         
-        label.draw(in: CGRect(x: 50, y: 50, width: 50, height: 50), withAttributes: _drawAttributes)
+        label.draw(in: CGRect(x: 50, y: 50, width: 200, height: 200), withAttributes: _drawAttributes)
         
         UIGraphicsPopContext()
         
@@ -88,7 +88,11 @@ open class BalloonMarker: MarkerImage
     
     open override func refreshContent(entry: ChartDataEntry, highlight: Highlight)
     {
-        setLabel(String(entry.x))
+        let set1 = chartView?.data?.dataSets[0]
+        let set2 = chartView?.data?.dataSets[1]
+        let setEntry1 = set1?.entryForIndex(Int(entry.x))
+        let setEntry2 = set2?.entryForIndex(Int(entry.x))
+        setLabel(String("体量：\(setEntry1?.y ?? 0.0)kg\n 体脂肪率：\(setEntry2?.y ?? 0.0)%"))
     }
     
     open func getLabel() -> String? {
