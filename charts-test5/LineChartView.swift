@@ -45,10 +45,6 @@ class LineChart: UIView, IAxisValueFormatter {
             date = NSCalendar.current.date(byAdding: .day, value: Int(Int(xAxis[Int(value)])! * -1), to: NSDate() as Date) as Date!
             dateFormatter.dateFormat = "MM月dd日"
         }
-        
-        
-        
-        //print() // 2001/01/0
         return dateFormatter.string(from: date)
     }
     public func setValues(values: [String]) {

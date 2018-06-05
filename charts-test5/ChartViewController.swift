@@ -100,8 +100,8 @@ protocol GetChartData {
         marker.chartViewController = self
        //lineChart.lineChartView.highlightValue(x: 0.0, dataSetIndex: 0)
         self.view.addSubview(lineChart)
-        weightPanel = UILabel.init(frame: CGRect(x:self.view.frame.width * 0.10, y: 5, width: self.view.frame.width * 0.30, height: 50))
-        fatPanel = UILabel.init(frame: CGRect(x:self.view.frame.width * 0.55, y: 5, width: self.view.frame.width * 0.50, height: 50))
+        weightPanel = UILabel.init(frame: CGRect(x:20, y: 5, width: 300, height: 50))
+        fatPanel = UILabel.init(frame: CGRect(x:self.view.frame.width - 150, y: 5, width: 300, height: 50))
         self.view.addSubview(weightPanel!)
         self.view.addSubview(fatPanel!)
         addButtons()
