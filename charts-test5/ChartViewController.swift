@@ -20,6 +20,9 @@ protocol GetChartData {
     var xAxis = [String]()
     var yAxis = [[String]]()
     
+    var weightPanel: UILabel?
+    var fatPanel: UILabel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         populateChartData()
@@ -88,43 +91,44 @@ protocol GetChartData {
     func lineChart() {
         let lineChart = LineChart(frame: CGRect(x: 0.0, y: self.view.frame.height * 0.15, width: self.view.frame.width, height: self.view.frame.height * 0.85))
         lineChart.delegate = self
-        let marker: BalloonMarker = BalloonMarker(color: UIColor.blue, font: UIFont(name: "Helvetica", size: 12.0)!, textColor: UIColor.black, insets: UIEdgeInsetsMake(7.0, 7.0, 25.0, 7.0))
-        marker.minimumSize = CGSize(width: 75.0, height: 35.0)
+        let marker: BalloonMarker = BalloonMarker(color: UIColor.black, font: UIFont(name: "Helvetica", size: 12.0)!, textColor: UIColor.black, insets: UIEdgeInsetsMake(0,0,0,0))
+        marker.minimumSize = CGSize(width: 1.0, height: 35.0)
         lineChart.lineChartView.marker = marker
         marker.chartView = lineChart.lineChartView
-        lineChart.lineChartView.highlightValue(x: 0.0, dataSetIndex: 0)
+        marker.chartViewController = self
+       //lineChart.lineChartView.highlightValue(x: 0.0, dataSetIndex: 0)
         self.view.addSubview(lineChart)
+        weightPanel = UILabel.init(frame: CGRect(x:self.view.frame.width * 0.10, y: 5, width: self.view.frame.width * 0.30, height: 50))
+        fatPanel = UILabel.init(frame: CGRect(x:self.view.frame.width * 0.55, y: 5, width: self.view.frame.width * 0.50, height: 50))
+        self.view.addSubview(weightPanel!)
+        self.view.addSubview(fatPanel!)
         addButtons()
     }
     
     func addButtons() { //NOTE: figure out how to do this without specifying the positions manually
         let button1 = UIButton.init(type: .roundedRect)
-        button1.frame = CGRect(x:self.view.frame.width * 0.20, y: self.view.frame.height * 0.10, width: self.view.frame.width * 0.20, height: 50)
-        button1.setTitle("一ヶ月間", for: .normal)
+        button1.frame = CGRect(x:self.view.frame.width * 0.40, y: self.view.frame.height * 0.10, width: self.view.frame.width * 0.20, height: 10)
+        button1.setTitle("1ヶ月間", for: .normal)
         button1.addTarget(self, action: #selector(buttonClicked1(_ :)), for: .touchUpInside)
         self.view.addSubview(button1)
         
         let button2 = UIButton.init(type: .roundedRect)
-        button2.frame = CGRect(x:self.view.frame.width * 0.40, y: self.view.frame.height * 0.10, width: self.view.frame.width * 0.20, height: 50)
-        button2.setTitle("一週間", for: .normal)
+        button2.frame = CGRect(x:self.view.frame.width * 0.60, y: self.view.frame.height * 0.10, width: self.view.frame.width * 0.20, height: 10)
+        button2.setTitle("1週間", for: .normal)
         button2.addTarget(self, action: #selector(buttonClicked2(_ :)), for: .touchUpInside)
         self.view.addSubview(button2)
         
         let button3 = UIButton.init(type: .roundedRect)
-        button3.frame = CGRect(x:self.view.frame.width * 0.60, y: self.view.frame.height * 0.10, width: self.view.frame.width * 0.20, height: 50)
-        button3.setTitle("一年間", for: .normal)
+        button3.frame = CGRect(x:self.view.frame.width * 0.20, y: self.view.frame.height * 0.10, width: self.view.frame.width * 0.20, height: 10)
+        button3.setTitle("1年間", for: .normal)
         button3.addTarget(self, action: #selector(buttonClicked3(_ :)), for: .touchUpInside)
         self.view.addSubview(button3)
     }
     
-    func addLabel(marker: BalloonMarker) {
-        let weightPanel = UILabel.init(frame: CGRect(x:self.view.frame.width * 0.33, y: 0.0, width: self.view.frame.width * 0.20, height: 50))
-        let fatPanel = UILabel.init(frame: CGRect(x:self.view.frame.width * 0.66, y: 0.0, width: self.view.frame.width * 0.20, height: 50))
-        weightPanel.text = marker.bodyWeight
-        fatPanel.text = marker.bodyFat
-        self.view.addSubview(weightPanel)
-        self.view.addSubview(fatPanel)
-        print(weightPanel.text)
+    func updateLabel(weight: String, fat: String) {
+        weightPanel?.text = weight
+        fatPanel?.text = fat
+     //print(label)
     }
     
     func getChartData(with dataPoints: [String], values: [[String]]) {

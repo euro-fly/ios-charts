@@ -93,6 +93,7 @@ class LineChart: UIView, IAxisValueFormatter {
             chartDataSet.setCircleColor(colors[i])
             chartDataSet.circleHoleColor = colors[i]
             chartDataSet.circleRadius = 0.0
+            chartDataSet.fillAlpha = 0.0
             //chartDataSet.fill = Fill.fillWithLinearGradient(gradient, angle: 90.0)
             chartDataSet.drawFilledEnabled = true
             chartDataSet.axisDependency = axes[i]
