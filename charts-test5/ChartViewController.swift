@@ -16,8 +16,6 @@ protocol GetChartData {
     var yAxis: [[String]] {get set}
 }
 
-
-
 @objc class ChartViewController: UIViewController, GetChartData {
     @IBOutlet weak var myLineChart: LineChart!
     var xAxis = [String]()
@@ -40,31 +38,20 @@ protocol GetChartData {
             UIDevice.current.setValue(value, forKey: "orientation")
         }
     }
-    
-//    @IBOutlet weak var lineChart: LineChart!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(myLineChart)
         self.view.addSubview(buttonSet)
         self.view.addSubview(weightLabel)
         self.view.addSubview(fatLabel)
-        populateChartData()
+        populateChartDataThree()
         lineChart()
     }
 
-    
-     //override func viewDidLayoutSubviews() {
-        //super.viewDidLayoutSubviews()
-        //RefreshChart()
-    //}
-    
     func RefreshChart() {
         myLineChart.removeLimitLine()
         lineChart()
-        //self.view.setNeedsDisplay()
-        //self.view.setNeedsLayout()
-        //self.view.setNeedsUpdateConstraints()
     }
     
     @IBOutlet weak var buttonSet: UISegmentedControl!
@@ -116,54 +103,24 @@ protocol GetChartData {
         self.getChartData(with: xAxis, values: yAxis)
     }
     
-    //todo: a fourth function, for "all"
-    
-    @objc func buttonClicked1(_ sender: UIButton) {
-        populateChartData()
-        RefreshChart()
-    }
-    
-    @objc func buttonClicked2(_ sender: UIButton) {
-        populateChartDataTwo()
-        RefreshChart()
-    }
-    
-    @objc func buttonClicked3(_ sender: UIButton) {
-        populateChartDataThree()
-        RefreshChart()
-    }
-    
     func lineChart() {
-        //let lineChart = LineChart(frame: CGRect(x: 0.0, y: self.view.frame.height * 0.15, width: self.view.frame.width, height: self.view.frame.height * 0.70))
-        
         myLineChart.delegate = self
         let marker: BalloonMarker = BalloonMarker(color: UIColor.black, font: UIFont(name: "Helvetica", size: 12.0)!, textColor: UIColor.black, insets: UIEdgeInsetsMake(0,0,0,0))
         marker.minimumSize = CGSize(width: 1.0, height: 35.0)
         myLineChart.lineChartView.marker = marker
         marker.chartView = myLineChart.lineChartView
         marker.chartViewController = self
-       //lineChart.lineChartView.highlightValue(x: 0.0, dataSetIndex: 0)
-        //self.view.addSubview(myLineChart)
-        //weightPanel = UILabel.init(frame: CGRect(x:20, y: 5, width: 300, height: 50))
-        //fatPanel = UILabel.init(frame: CGRect(x:self.view.frame.width - 150, y: 5, width: 300, height: 50))
-        //self.view.addSubview(weightPanel!)
-        //self.view.addSubview(fatPanel!)
-        //addButtons()
     }
     
     func updateLabel(weight: String, fat: String) {
         weightLabel.text = weight
         fatLabel.text = fat
-     //print(label)
     }
     
     func getChartData(with dataPoints: [String], values: [[String]]) {
         self.xAxis = dataPoints
         self.yAxis = values
     }
-    
-    
 }
-//The target function
 
 
