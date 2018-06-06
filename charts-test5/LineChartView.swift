@@ -67,7 +67,7 @@ class LineChart: UIView, IAxisValueFormatter {
         self.backgroundColor = UIColor.white
         self.addSubview(lineChartView)
         lineChartView.translatesAutoresizingMaskIntoConstraints = false
-        lineChartView.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
+        lineChartView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         lineChartView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         lineChartView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         lineChartView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
@@ -136,8 +136,11 @@ class LineChart: UIView, IAxisValueFormatter {
         lineChartView.leftAxis.drawGridLinesEnabled = false
         lineChartView.leftAxis.drawLabelsEnabled = true
         lineChartView.data = chartData
-        
-        
+    }
+    
+    func removeLimitLine() {
+        lineChartView.rightAxis.removeAllLimitLines()
+        lineChartView.leftAxis.removeAllLimitLines()
     }
     
     

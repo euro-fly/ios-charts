@@ -19,32 +19,59 @@ protocol GetChartData {
 
 
 @objc class ChartViewController: UIViewController, GetChartData {
+    @IBOutlet weak var myLineChart: LineChart!
     var xAxis = [String]()
     var yAxis = [[String]]()
     
     var weightPanel: UILabel?
     var fatPanel: UILabel?
     
+    
+//    @IBOutlet weak var lineChart: LineChart!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.addSubview(myLineChart)
+        self.view.addSubview(buttonSet)
         populateChartData()
         lineChart()
     }
 
     
-     override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        RefreshChart()
-    }
+     //override func viewDidLayoutSubviews() {
+        //super.viewDidLayoutSubviews()
+        //RefreshChart()
+    //}
     
     func RefreshChart() {
-        for subview in self.view.subviews {
-            subview.removeFromSuperview()
-        }
+        myLineChart.removeLimitLine()
         lineChart()
-        self.view.setNeedsDisplay()
+        //self.view.setNeedsDisplay()
+        //self.view.setNeedsLayout()
+        //self.view.setNeedsUpdateConstraints()
     }
     
+    @IBOutlet weak var buttonSet: UISegmentedControl!
+    
+    @IBAction func indexChanged(_ sender: Any) {
+        switch buttonSet.selectedSegmentIndex {
+        case 0:
+            populateChartDataThree()
+            RefreshChart()
+            break
+        case 1:
+            populateChartData()
+            RefreshChart()
+            break
+        case 2:
+            populateChartDataTwo()
+            RefreshChart()
+            break
+        default:
+            RefreshChart()
+            break
+        }
+    }
     
     //todo: let this be the monthly view
     func populateChartData() { // any number of data sets can be specified in this case.
@@ -91,15 +118,16 @@ protocol GetChartData {
     }
     
     func lineChart() {
-        let lineChart = LineChart(frame: CGRect(x: 0.0, y: self.view.frame.height * 0.15, width: self.view.frame.width, height: self.view.frame.height * 0.70))
-        lineChart.delegate = self
+        //let lineChart = LineChart(frame: CGRect(x: 0.0, y: self.view.frame.height * 0.15, width: self.view.frame.width, height: self.view.frame.height * 0.70))
+        
+        myLineChart.delegate = self
         let marker: BalloonMarker = BalloonMarker(color: UIColor.black, font: UIFont(name: "Helvetica", size: 12.0)!, textColor: UIColor.black, insets: UIEdgeInsetsMake(0,0,0,0))
         marker.minimumSize = CGSize(width: 1.0, height: 35.0)
-        lineChart.lineChartView.marker = marker
-        marker.chartView = lineChart.lineChartView
+        myLineChart.lineChartView.marker = marker
+        marker.chartView = myLineChart.lineChartView
         marker.chartViewController = self
        //lineChart.lineChartView.highlightValue(x: 0.0, dataSetIndex: 0)
-        self.view.addSubview(lineChart)
+        //self.view.addSubview(myLineChart)
         weightPanel = UILabel.init(frame: CGRect(x:20, y: 5, width: 300, height: 50))
         fatPanel = UILabel.init(frame: CGRect(x:self.view.frame.width - 150, y: 5, width: 300, height: 50))
         self.view.addSubview(weightPanel!)
@@ -108,24 +136,7 @@ protocol GetChartData {
     }
     
     func addButtons() { //NOTE: figure out how to do this without specifying the positions manually
-        let button1 = UIButton.init(type: .roundedRect)
-        button1.frame = CGRect(x:self.view.frame.width * 0.40, y: self.view.frame.height * 0.10, width: self.view.frame.width * 0.20, height: 10)
-        button1.setTitle("1ヶ月間", for: .normal)
-        button1.addTarget(self, action: #selector(buttonClicked1(_ :)), for: .touchUpInside)
-        self.view.addSubview(button1)
-        
-        let button2 = UIButton.init(type: .roundedRect)
-        button2.frame = CGRect(x:self.view.frame.width * 0.60, y: self.view.frame.height * 0.10, width: self.view.frame.width * 0.20, height: 10)
-        button2.setTitle("1週間", for: .normal)
-        button2.addTarget(self, action: #selector(buttonClicked2(_ :)), for: .touchUpInside)
-        self.view.addSubview(button2)
-        
-        let button3 = UIButton.init(type: .roundedRect)
-        button3.frame = CGRect(x:self.view.frame.width * 0.20, y: self.view.frame.height * 0.10, width: self.view.frame.width * 0.20, height: 10)
-        button3.setTitle("1年間", for: .normal)
-        button3.addTarget(self, action: #selector(buttonClicked3(_ :)), for: .touchUpInside)
-        self.view.addSubview(button3)
-        
+        //self.view.addSubview(buttonSet)
         let button4 = UIButton.init(type: .roundedRect)
         button4.frame = CGRect(x:self.view.frame.width * 0.50, y: self.view.frame.height * 0.90, width: self.view.frame.width * 0.20, height: 10)
         button4.setTitle("Rotate", for: .normal)
@@ -151,7 +162,7 @@ protocol GetChartData {
         
         
         //populateChartDataThree()
-        //RefreshChart()
+        RefreshChart()
     }
     
     func getChartData(with dataPoints: [String], values: [[String]]) {
