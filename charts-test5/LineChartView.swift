@@ -120,7 +120,7 @@ class LineChart: UIView, IAxisValueFormatter {
         lineChartView.xAxis.labelFont = UIFont(name: "Helvetica", size: 8)!
         lineChartView.rightAxis.drawLimitLinesBehindDataEnabled = true
         let bodyFatTargetLine = ChartLimitLine(limit: chartData.dataSets[1].yMin - 5, label: "体脂肪率")
-        let bodyWeightTargetLine = ChartLimitLine(limit: chartData.dataSets[0].yMin - 5, label: "体量") //体量
+        let bodyWeightTargetLine = ChartLimitLine(limit: chartData.dataSets[0].yMin - 5, label: "体量")
         bodyFatTargetLine.lineDashLengths = [0.5]
         bodyWeightTargetLine.lineDashLengths = [0.5]
         bodyFatTargetLine.lineColor = UIColor.purple
