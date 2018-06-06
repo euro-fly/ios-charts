@@ -91,7 +91,7 @@ protocol GetChartData {
     }
     
     func lineChart() {
-        let lineChart = LineChart(frame: CGRect(x: 0.0, y: self.view.frame.height * 0.15, width: self.view.frame.width, height: self.view.frame.height * 0.85))
+        let lineChart = LineChart(frame: CGRect(x: 0.0, y: self.view.frame.height * 0.15, width: self.view.frame.width, height: self.view.frame.height * 0.70))
         lineChart.delegate = self
         let marker: BalloonMarker = BalloonMarker(color: UIColor.black, font: UIFont(name: "Helvetica", size: 12.0)!, textColor: UIColor.black, insets: UIEdgeInsetsMake(0,0,0,0))
         marker.minimumSize = CGSize(width: 1.0, height: 35.0)
@@ -125,12 +125,33 @@ protocol GetChartData {
         button3.setTitle("1年間", for: .normal)
         button3.addTarget(self, action: #selector(buttonClicked3(_ :)), for: .touchUpInside)
         self.view.addSubview(button3)
+        
+        let button4 = UIButton.init(type: .roundedRect)
+        button4.frame = CGRect(x:self.view.frame.width * 0.50, y: self.view.frame.height * 0.90, width: self.view.frame.width * 0.20, height: 10)
+        button4.setTitle("Rotate", for: .normal)
+        button4.addTarget(self, action: #selector(buttonClicked4(_ :)), for: .touchUpInside)
+        self.view.addSubview(button4)
     }
     
     func updateLabel(weight: String, fat: String) {
         weightPanel?.text = weight
         fatPanel?.text = fat
      //print(label)
+    }
+    
+    @objc func buttonClicked4(_ sender: UIButton) {
+        if UIDevice.current.orientation.isLandscape {
+            let value = UIInterfaceOrientation.portrait.rawValue
+            UIDevice.current.setValue(value, forKey: "orientation")
+        }
+        else if UIDevice.current.orientation.isPortrait {
+            let value = UIInterfaceOrientation.landscapeRight.rawValue
+            UIDevice.current.setValue(value, forKey: "orientation")
+        }
+        
+        
+        //populateChartDataThree()
+        //RefreshChart()
     }
     
     func getChartData(with dataPoints: [String], values: [[String]]) {
