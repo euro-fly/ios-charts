@@ -95,9 +95,7 @@ class LineChart: UIView, IAxisValueFormatter {
             chartData.addDataSet(chartDataSet)
             chartDataSet.colors = [colors[i]]
             chartDataSet.lineWidth = 3.0
-            chartDataSet.setCircleColor(colors[i])
-            chartDataSet.circleHoleColor = colors[i]
-            chartDataSet.circleRadius = 0.0
+            chartDataSet.drawCirclesEnabled = false
             chartDataSet.fillAlpha = 0.0
             //chartDataSet.fill = Fill.fillWithLinearGradient(gradient, angle: 90.0)
             chartDataSet.drawFilledEnabled = true

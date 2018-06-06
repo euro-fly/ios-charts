@@ -10,6 +10,10 @@ import Foundation
 import Charts
 import UIKit
 
+extension String  {
+    var isNumber: Bool { return Int(self) != nil || Double(self) != nil }
+}
+
 protocol GetChartData {
     func getChartData(with dataPoints: [String], values: [[String]])
     var xAxis: [String] {get set}
@@ -21,13 +25,51 @@ protocol GetChartData {
     var xAxis = [String]()
     var yAxis = [[String]]()
     
+    var xAxisMonthly = ["29", "28", "27", "26", "25", "24", "23", "22", "21", "20", "19", "18", "17", "16", "15", "14", "13", "12", "11", "10", "9", "8", "7", "6", "5", "4", "3", "2", "1", "0" ]
+    var yAxisMonthly1 = ["56", "56", "54", "56", "54", "53", "59", "51", "58", "56", "50", "58", "55", "56", "50", "58", "59", "51", "58", "51", "53", "52", "56", "56", "52", "52", "59", "53", "55", "52"]
+    var yAxisMonthly2 = ["23", "26", "29", "28", "25", "28", "21", "24", "22", "26", "22", "23", "21", "23", "22", "22", "29", "22", "26", "22", "22", "23", "20", "23", "28", "25", "24", "24", "27", "24"]
+    
+    var xAxisWeekly = ["6", "5", "4", "3", "2", "1", "0"]
+    var yAxisWeekly1 = ["54", "52", "52", "54", "57", "57", "50"]
+    var yAxisWeekly2 = ["23", "24", "21", "21", "25", "29", "29"]
+    
+    var xAxisYearly = ["11", "10", "9", "8", "7", "6", "5", "4", "3", "2", "1", "0"]
+    var yAxisYearly1 = ["50", "59", "52", "50", "50", "56", "57", "60", "58", "51", "51", "51"]
+    var yAxisYearly2 = ["26", "25", "26", "29", "23", "24", "25", "26", "24", "24", "30", "28"]
+    
     @IBOutlet weak var myRotateButton: UIButton!
     @IBOutlet weak var weightLabel: UILabel!
     @IBOutlet weak var fatLabel: UILabel!
-    
-    var weightPanel: UILabel?
-    var fatPanel: UILabel?
-    
+    @IBOutlet weak var updateButton: UIButton!
+    @IBAction func updateChart(_ sender: Any) {
+        let alertController = UIAlertController(title: "Update", message: "Update weight and body fat percentage", preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: "Enter", style: .default) { (_) in
+            //getting the input values from user
+            let weight = alertController.textFields?[0].text
+            let fat = alertController.textFields?[1].text
+            if ((weight?.isNumber)! && (fat?.isNumber)!) {
+                self.yAxis[0][self.xAxis.count - 1] = weight!
+                self.yAxis[1][self.xAxis.count - 1] = fat!
+                self.getChartData(with: self.xAxis, values: self.yAxis)
+                self.RefreshChart()
+            }
+        }
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
+
+        alertController.addTextField { (textField) in
+            textField.placeholder = "Body Weight"
+        }
+        alertController.addTextField { (textField) in
+            textField.placeholder = "Fat Percentage"
+        }
+        
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+
     @IBAction func rotate(_ sender: Any) {
         if UIDevice.current.orientation.isLandscape {
             let value = UIInterfaceOrientation.portrait.rawValue
@@ -76,30 +118,21 @@ protocol GetChartData {
         }
     }
     
-    //todo: let this be the monthly view
     func populateChartData() { // any number of data sets can be specified in this case.
-        xAxis = ["29", "28", "27", "26", "25", "24", "23", "22", "21", "20", "19", "18", "17", "16", "15", "14", "13", "12", "11", "10", "9", "8", "7", "6", "5", "4", "3", "2", "1", "0" ]
-        let yAxis1 = ["56", "56", "54", "56", "54", "53", "59", "51", "58", "56", "50", "58", "55", "56", "50", "58", "59", "51", "58", "51", "53", "52", "56", "56", "52", "52", "59", "53", "55", "52"]
-        let yAxis2 = ["23", "26", "29", "28", "25", "28", "21", "24", "22", "26", "22", "23", "21", "23", "22", "22", "29", "22", "26", "22", "22", "23", "20", "23", "28", "25", "24", "24", "27", "24"]
-        yAxis = [yAxis1, yAxis2]
+        xAxis = xAxisMonthly
+        yAxis = [yAxisMonthly1, yAxisMonthly2]
         self.getChartData(with: xAxis, values: yAxis)
     }
     
-    //todo: let this be the weekly view
     func populateChartDataTwo() { // any number of data sets can be specified in this case.
-        xAxis = ["6", "5", "4", "3", "2", "1", "0"]
-        let yAxis1 = ["54", "52", "52", "54", "57", "57", "50"]
-        let yAxis2 = ["23", "24", "21", "21", "25", "29", "29"]
-        yAxis = [yAxis1, yAxis2]
+        xAxis = xAxisWeekly
+        yAxis = [yAxisWeekly1, yAxisWeekly2]
         self.getChartData(with: xAxis, values: yAxis)
     }
     
-    //todo: let this be the yearly view
     func populateChartDataThree() { // any number of data sets can be specified in this case.
-        xAxis = ["11", "10", "9", "8", "7", "6", "5", "4", "3", "2", "1", "0"]
-        let yAxis1 = ["50", "59", "52", "50", "50", "56", "57", "60", "58", "51", "51", "51"]
-        let yAxis2 = ["26", "25", "26", "29", "23", "24", "25", "26", "24", "24", "30", "28"]
-        yAxis = [yAxis1, yAxis2]
+        xAxis = xAxisYearly
+        yAxis = [yAxisYearly1, yAxisYearly2]
         self.getChartData(with: xAxis, values: yAxis)
     }
     

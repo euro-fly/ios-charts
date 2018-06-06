@@ -34,11 +34,11 @@
                                 </connections>
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="63W-qL-ovu" customClass="LineChart" customModule="charts_test5" customModuleProvider="target">
-                                <rect key="frame" x="6" y="130" width="364" height="457"/>
+                                <rect key="frame" x="6" y="130" width="364" height="486"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTq-Ch-2mI">
-                                <rect key="frame" x="164.5" y="617" width="45" height="30"/>
+                                <rect key="frame" x="27" y="624" width="45" height="30"/>
                                 <state key="normal" title="Rotate"/>
                                 <connections>
                                     <action selector="rotate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IRh-Pa-zLo"/>
@@ -56,22 +56,31 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VYz-A4-Pp6">
+                                <rect key="frame" x="296" y="624" width="51" height="30"/>
+                                <state key="normal" title="Update"/>
+                                <connections>
+                                    <action selector="updateChart:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N3q-tH-5mZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Zbo-eU-zka" firstAttribute="leading" secondItem="omy-Z4-D8S" secondAttribute="leading" id="3w7-Gw-0wd"/>
-                            <constraint firstItem="OTq-Ch-2mI" firstAttribute="centerX" secondItem="63W-qL-ovu" secondAttribute="centerX" constant="-1" id="5qh-ZY-n8w"/>
                             <constraint firstItem="63W-qL-ovu" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" constant="11" id="9Q2-p0-djD"/>
                             <constraint firstItem="omy-Z4-D8S" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="27" id="9mM-cZ-SSl"/>
+                            <constraint firstItem="OjZ-zo-Lpp" firstAttribute="baseline" secondItem="Zbo-eU-zka" secondAttribute="baseline" id="CM2-Nz-eEb"/>
+                            <constraint firstItem="OTq-Ch-2mI" firstAttribute="leading" secondItem="omy-Z4-D8S" secondAttribute="leading" id="Ibm-By-iz5"/>
+                            <constraint firstItem="OjZ-zo-Lpp" firstAttribute="trailing" secondItem="omy-Z4-D8S" secondAttribute="trailing" id="N4m-9N-Qhs"/>
                             <constraint firstItem="omy-Z4-D8S" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="74" id="Q9I-eH-df1"/>
-                            <constraint firstItem="OjZ-zo-Lpp" firstAttribute="baseline" secondItem="Zbo-eU-zka" secondAttribute="baseline" id="Zjk-ve-gMv"/>
-                            <constraint firstItem="OjZ-zo-Lpp" firstAttribute="trailing" secondItem="omy-Z4-D8S" secondAttribute="trailing" id="fVs-If-02L"/>
+                            <constraint firstItem="VYz-A4-Pp6" firstAttribute="trailing" secondItem="omy-Z4-D8S" secondAttribute="trailing" id="R9G-Wh-cIT"/>
                             <constraint firstItem="63W-qL-ovu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-10" id="gN9-kR-ePf"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="63W-qL-ovu" secondAttribute="bottom" constant="80" id="m8L-eI-mZt"/>
-                            <constraint firstAttribute="bottom" secondItem="OTq-Ch-2mI" secondAttribute="bottom" constant="20" symbolic="YES" id="pir-3c-eq0"/>
+                            <constraint firstItem="OTq-Ch-2mI" firstAttribute="baseline" secondItem="VYz-A4-Pp6" secondAttribute="baseline" id="gjD-zR-KX2"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="63W-qL-ovu" secondAttribute="bottom" constant="51" id="m8L-eI-mZt"/>
                             <constraint firstItem="63W-qL-ovu" firstAttribute="top" secondItem="omy-Z4-D8S" secondAttribute="bottom" constant="8" symbolic="YES" id="qIo-Ce-RJb"/>
                             <constraint firstItem="omy-Z4-D8S" firstAttribute="top" secondItem="Zbo-eU-zka" secondAttribute="bottom" constant="8" symbolic="YES" id="v3R-8c-VUN"/>
                             <constraint firstItem="omy-Z4-D8S" firstAttribute="centerX" secondItem="63W-qL-ovu" secondAttribute="centerX" constant="-1" id="wNI-8F-XkB"/>
+                            <constraint firstItem="VYz-A4-Pp6" firstAttribute="top" secondItem="63W-qL-ovu" secondAttribute="bottom" constant="8" symbolic="YES" id="z66-ZM-ZmN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -81,6 +90,7 @@
                         <outlet property="fatLabel" destination="OjZ-zo-Lpp" id="x6i-mj-hXu"/>
                         <outlet property="myLineChart" destination="63W-qL-ovu" id="dy6-Lu-y2n"/>
                         <outlet property="myRotateButton" destination="OTq-Ch-2mI" id="tsI-Df-GVz"/>
+                        <outlet property="updateButton" destination="VYz-A4-Pp6" id="snC-7D-7Zr"/>
                         <outlet property="weightLabel" destination="Zbo-eU-zka" id="Vxd-Uj-6va"/>
                     </connections>
                 </viewController>
