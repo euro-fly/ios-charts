@@ -96,8 +96,8 @@ open class BalloonMarker: MarkerImage
         let set2 = chartView?.data?.dataSets[1]
         let setEntry1 = set1?.entryForIndex(Int(entry.x))
         let setEntry2 = set2?.entryForIndex(Int(entry.x))
-        bodyWeight = String("体量：\(setEntry1?.y ?? 0.0)kg")
-        bodyFat = String("体脂肪率：\(setEntry2?.y ?? 0.0)%")
+        bodyWeight = String("\(setEntry1?.y ?? 0.0)kg")
+        bodyFat = String("\(setEntry2?.y ?? 0.0)%")
         setLabel(String("体量：\(setEntry1?.y ?? 0.0)kg\n 体脂肪率：\(setEntry2?.y ?? 0.0)%"))
         
         chartViewController?.updateLabel(weight: bodyWeight!, fat: bodyFat!)

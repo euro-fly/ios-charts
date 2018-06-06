@@ -23,9 +23,23 @@ protocol GetChartData {
     var xAxis = [String]()
     var yAxis = [[String]]()
     
+    @IBOutlet weak var myRotateButton: UIButton!
+    @IBOutlet weak var weightLabel: UILabel!
+    @IBOutlet weak var fatLabel: UILabel!
+    
     var weightPanel: UILabel?
     var fatPanel: UILabel?
     
+    @IBAction func rotate(_ sender: Any) {
+        if UIDevice.current.orientation.isLandscape {
+            let value = UIInterfaceOrientation.portrait.rawValue
+            UIDevice.current.setValue(value, forKey: "orientation")
+        }
+        else if UIDevice.current.orientation.isPortrait {
+            let value = UIInterfaceOrientation.landscapeRight.rawValue
+            UIDevice.current.setValue(value, forKey: "orientation")
+        }
+    }
     
 //    @IBOutlet weak var lineChart: LineChart!
     
@@ -33,6 +47,8 @@ protocol GetChartData {
         super.viewDidLoad()
         self.view.addSubview(myLineChart)
         self.view.addSubview(buttonSet)
+        self.view.addSubview(weightLabel)
+        self.view.addSubview(fatLabel)
         populateChartData()
         lineChart()
     }
@@ -128,41 +144,17 @@ protocol GetChartData {
         marker.chartViewController = self
        //lineChart.lineChartView.highlightValue(x: 0.0, dataSetIndex: 0)
         //self.view.addSubview(myLineChart)
-        weightPanel = UILabel.init(frame: CGRect(x:20, y: 5, width: 300, height: 50))
-        fatPanel = UILabel.init(frame: CGRect(x:self.view.frame.width - 150, y: 5, width: 300, height: 50))
-        self.view.addSubview(weightPanel!)
-        self.view.addSubview(fatPanel!)
-        addButtons()
-    }
-    
-    func addButtons() { //NOTE: figure out how to do this without specifying the positions manually
-        //self.view.addSubview(buttonSet)
-        let button4 = UIButton.init(type: .roundedRect)
-        button4.frame = CGRect(x:self.view.frame.width * 0.50, y: self.view.frame.height * 0.90, width: self.view.frame.width * 0.20, height: 10)
-        button4.setTitle("Rotate", for: .normal)
-        button4.addTarget(self, action: #selector(buttonClicked4(_ :)), for: .touchUpInside)
-        self.view.addSubview(button4)
+        //weightPanel = UILabel.init(frame: CGRect(x:20, y: 5, width: 300, height: 50))
+        //fatPanel = UILabel.init(frame: CGRect(x:self.view.frame.width - 150, y: 5, width: 300, height: 50))
+        //self.view.addSubview(weightPanel!)
+        //self.view.addSubview(fatPanel!)
+        //addButtons()
     }
     
     func updateLabel(weight: String, fat: String) {
-        weightPanel?.text = weight
-        fatPanel?.text = fat
+        weightLabel.text = weight
+        fatLabel.text = fat
      //print(label)
-    }
-    
-    @objc func buttonClicked4(_ sender: UIButton) {
-        if UIDevice.current.orientation.isLandscape {
-            let value = UIInterfaceOrientation.portrait.rawValue
-            UIDevice.current.setValue(value, forKey: "orientation")
-        }
-        else if UIDevice.current.orientation.isPortrait {
-            let value = UIInterfaceOrientation.landscapeRight.rawValue
-            UIDevice.current.setValue(value, forKey: "orientation")
-        }
-        
-        
-        //populateChartDataThree()
-        RefreshChart()
     }
     
     func getChartData(with dataPoints: [String], values: [[String]]) {
