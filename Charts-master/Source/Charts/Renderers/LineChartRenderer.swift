@@ -720,53 +720,54 @@ open class LineChartRenderer: LineRadarRenderer
                 continue
             }
             
-            let set1 = lineData._dataSets[0]
-            let set2 = lineData._dataSets[1]
-            let setEntry1 = set1.entryForIndex(Int(high.x))
-            let setEntry2 = set2.entryForIndex(Int(high.x))
-            
-            let circleRadius = 5.0
-            let circleDiameter = circleRadius * 2.0
-
-            var rect1 = CGRect()
-            var rect2 = CGRect()
-            let x1 = setEntry1?.x // get the x-position
-            let y1 = Double((setEntry1?.y)!)
-            
-            let x2 = setEntry2?.x
-            let y2 = Double((setEntry2?.y)!)
+            // TODO: debug the below code. idk why it's throwing exceptions
+//            let set1 = lineData._dataSets[0]
+//            let set2 = lineData._dataSets[1]
+//            let setEntry1 = set1.entryForIndex(Int(high.x))
+//            let setEntry2 = set2.entryForIndex(Int(high.x))
+//
+//            let circleRadius = 5.0
+//            let circleDiameter = circleRadius * 2.0
+//
+//            var rect1 = CGRect()
+//            var rect2 = CGRect()
+//            let x1 = setEntry1?.x // get the x-position
+//            let y1 = setEntry1?.y
+//
+//            let x2 = setEntry2?.x
+//            let y2 = setEntry2?.y
 //
 //            if x > chartXMax * animator.phaseX
 //            {
 //                continue
 //            }
 
-            let trans = dataProvider.getTransformer(forAxis: set1.axisDependency)
-            let trans2 = dataProvider.getTransformer(forAxis: set2.axisDependency)
+            let trans = dataProvider.getTransformer(forAxis: set.axisDependency)
+            //let trans2 = dataProvider.getTransformer(forAxis: set2.axisDependency)
 
-            let pt1 = trans.pixelForValues(x: x1!, y: y1)
-            let pt2 = trans2.pixelForValues(x: x2!, y: y2)
+            let pt1 = trans.pixelForValues(x: high.x, y: high.y)
+ //           let pt2 = trans2.pixelForValues(x: x2!, y: y2!)
 
             high.setDraw(pt: pt1)
             
-            rect1.origin.x = pt1.x - CGFloat(circleRadius)
-            rect1.origin.y = pt1.y - CGFloat(circleRadius)
-            rect1.size.width = CGFloat(circleDiameter)
-            rect1.size.height = CGFloat(circleDiameter)
-            
-            rect2.origin.x = pt2.x - CGFloat(circleRadius)
-            rect2.origin.y = pt2.y - CGFloat(circleRadius)
-            rect2.size.width = CGFloat(circleDiameter)
-            rect2.size.height = CGFloat(circleDiameter)
-            context.fill(rect1);
-            context.fill(rect2);
-            
-            print(rect1.origin.x)
-            print(rect1.origin.y)
-            
-            print(rect2.origin.x)
-            print(rect2.origin.y)
-            
+//            rect1.origin.x = pt1.x - CGFloat(circleRadius)
+//            rect1.origin.y = pt1.y - CGFloat(circleRadius)
+//            rect1.size.width = CGFloat(circleDiameter)
+//            rect1.size.height = CGFloat(circleDiameter)
+//
+//            rect2.origin.x = pt2.x - CGFloat(circleRadius)
+//            rect2.origin.y = pt2.y - CGFloat(circleRadius)
+//            rect2.size.width = CGFloat(circleDiameter)
+//            rect2.size.height = CGFloat(circleDiameter)
+//            context.fill(rect1);
+//            context.fill(rect2);
+//
+//            print(rect1.origin.x)
+//            print(rect1.origin.y)
+//
+//            print(rect2.origin.x)
+//            print(rect2.origin.y)
+//
             // draw the lines
             //drawHighlightLines(context: context, point: pt1, set: set)
         }
