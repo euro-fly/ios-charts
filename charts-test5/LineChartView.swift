@@ -10,7 +10,7 @@ import Foundation
 import Charts
 import UIKit
 
-class LineChart: UIView, IAxisValueFormatter {
+@objc class LineChart: UIView, IAxisValueFormatter {
     let lineChartView = LineChartView()
     var lineDataEntry: [ChartDataEntry] = []
     

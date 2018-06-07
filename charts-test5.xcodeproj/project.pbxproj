@@ -20,6 +20,8 @@
 		16DCD39420BFC37A00466B9C /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DCD39320BFC37A00466B9C /* LineChartView.swift */; };
 		16DCD39620BFC3F600466B9C /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DCD39520BFC3F600466B9C /* ChartViewController.swift */; };
 		16EDC6F320C8CF0700456769 /* FirstStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16EDC6F220C8CF0700456769 /* FirstStoryboard.storyboard */; };
+		16EDC6FB20C90A0900456769 /* ObjCChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EDC6FA20C90A0900456769 /* ObjCChartViewController.m */; };
+		16EDC6FF20C91B7100456769 /* Main copy 2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16EDC6FD20C91B7100456769 /* Main copy 2.storyboard */; };
 		16F6896020C0DE7A002568FE /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F6895F20C0DE7A002568FE /* BalloonMarker.swift */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +92,8 @@
 		16DCD39320BFC37A00466B9C /* LineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
 		16DCD39520BFC3F600466B9C /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		16EDC6F220C8CF0700456769 /* FirstStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FirstStoryboard.storyboard; sourceTree = "<group>"; };
+		16EDC6FA20C90A0900456769 /* ObjCChartViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ObjCChartViewController.m; sourceTree = "<group>"; };
+		16EDC6FE20C91B7100456769 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Main copy 2.storyboard"; sourceTree = "<group>"; };
 		16F6895F20C0DE7A002568FE /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -150,11 +154,13 @@
 				1607455820BFC07C009F292D /* ViewController.h */,
 				1607455920BFC07C009F292D /* ViewController.m */,
 				1607455B20BFC07C009F292D /* Main.storyboard */,
+				16EDC6FD20C91B7100456769 /* Main copy 2.storyboard */,
 				16EDC6F220C8CF0700456769 /* FirstStoryboard.storyboard */,
 				1607455E20BFC097009F292D /* Assets.xcassets */,
 				1607456020BFC097009F292D /* LaunchScreen.storyboard */,
 				1607456320BFC097009F292D /* Info.plist */,
 				1607456420BFC097009F292D /* main.m */,
+				16EDC6FA20C90A0900456769 /* ObjCChartViewController.m */,
 				16DCD39320BFC37A00466B9C /* LineChartView.swift */,
 				16DCD39520BFC3F600466B9C /* ChartViewController.swift */,
 				16DCD39220BFC37A00466B9C /* charts-test5-Bridging-Header.h */,
@@ -335,6 +341,7 @@
 				1607456220BFC097009F292D /* LaunchScreen.storyboard in Resources */,
 				1607455F20BFC097009F292D /* Assets.xcassets in Resources */,
 				16EDC6F320C8CF0700456769 /* FirstStoryboard.storyboard in Resources */,
+				16EDC6FF20C91B7100456769 /* Main copy 2.storyboard in Resources */,
 				1607455D20BFC07C009F292D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -360,6 +367,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16EDC6FB20C90A0900456769 /* ObjCChartViewController.m in Sources */,
 				1607455A20BFC07C009F292D /* ViewController.m in Sources */,
 				1607456520BFC097009F292D /* main.m in Sources */,
 				1607455720BFC07C009F292D /* AppDelegate.m in Sources */,
@@ -415,6 +423,14 @@
 				1607456120BFC097009F292D /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		16EDC6FD20C91B7100456769 /* Main copy 2.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				16EDC6FE20C91B7100456769 /* Base */,
+			);
+			name = "Main copy 2.storyboard";
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -538,6 +554,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = TV9KFY46P5;
 				INFOPLIST_FILE = "charts-test5/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -563,6 +580,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = TV9KFY46P5;
 				INFOPLIST_FILE = "charts-test5/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
