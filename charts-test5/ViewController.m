@@ -9,6 +9,8 @@
 #import "ViewController.h"
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *myButton;
+- (IBAction)buttonPress:(id)sender;
 
 @end
 
@@ -16,7 +18,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     // Do any additional setup after loading the view, typically from a nib.
+    
+    //[self.view addSubview:_myButton];
 }
 
 
@@ -26,4 +31,6 @@
 }
 
 
+- (IBAction)buttonPress:(id)sender {
+}
 @end
