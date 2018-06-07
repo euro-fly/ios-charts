@@ -201,21 +201,48 @@ open class YAxisRenderer: AxisRendererBase
     
     @objc open var gridClippingRect: CGRect
     {
-        var contentRect = viewPortHandler.contentRect
-        let dy = self.axis?.gridLineWidth ?? 0.0
-        contentRect.origin.y -= dy / 2.0
-        contentRect.size.height += dy
-        return contentRect
+        guard let
+            yAxis = self.axis as? YAxis
+            else { return CGRect() }
+        if (yAxis.axisDependency == .left) {
+            var contentRect = viewPortHandler.contentRect
+            let dy = self.axis?.gridLineWidth ?? 0.0
+            contentRect.origin.y -= dy / 2.0
+            contentRect.size.height += dy
+            return contentRect
+        }
+        else {
+            var contentRect = viewPortHandler.contentRect
+            let dy = self.axis?.gridLineWidth ?? 0.0
+            contentRect.origin.y -= dy / 2.0
+            contentRect.size.height += dy
+            contentRect.size.width += 50
+            return contentRect
+        }
+        
     }
     
     @objc open func drawGridLine(
         context: CGContext,
         position: CGPoint)
     {
-        context.beginPath()
-        context.move(to: CGPoint(x: viewPortHandler.contentLeft, y: position.y))
-        context.addLine(to: CGPoint(x: viewPortHandler.contentRight, y: position.y))
-        context.strokePath()
+        
+        guard let
+            yAxis = self.axis as? YAxis
+            else { return }
+        if (yAxis.axisDependency == .left) {
+            context.beginPath()
+            context.move(to: CGPoint(x: viewPortHandler.contentLeft, y: position.y))
+            context.addLine(to: CGPoint(x: viewPortHandler.contentRight, y: position.y))
+            context.strokePath()
+        }
+        else {
+            context.beginPath()
+            context.move(to: CGPoint(x: viewPortHandler.contentRight, y: position.y))
+            context.addLine(to: CGPoint(x: viewPortHandler.contentRight + 5, y: position.y))
+            context.strokePath()
+        }
+        
     }
     
     @objc open func transformedPositions() -> [CGPoint]

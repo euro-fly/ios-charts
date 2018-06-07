@@ -136,7 +136,7 @@ class LineChart: UIView, IAxisValueFormatter {
         lineChartView.leftAxis.drawGridLinesEnabled = true
         lineChartView.leftAxis.gridColor = UIColorFromRGB(rgbValue: 0x111E6C)
         lineChartView.leftAxis.gridLineWidth = 1.5
-        lineChartView.rightAxis.gridLineWidth = 1.5
+        //lineChartView.rightAxis.gridLineWidth = 1
         lineChartView.rightAxis.gridColor = UIColorFromRGB(rgbValue: 0x0F52BA)
         lineChartView.leftAxis.drawLabelsEnabled = true
         lineChartView.data = chartData
