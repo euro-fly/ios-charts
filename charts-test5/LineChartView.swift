@@ -123,8 +123,8 @@ class LineChart: UIView, IAxisValueFormatter {
         let bodyWeightTargetLine = ChartLimitLine(limit: chartData.dataSets[0].yMin - 5, label: "体量")
         bodyFatTargetLine.lineDashLengths = [0.5]
         bodyWeightTargetLine.lineDashLengths = [0.5]
-        bodyFatTargetLine.lineColor = UIColor.purple
-        bodyWeightTargetLine.lineColor = UIColor.blue
+        bodyFatTargetLine.lineColor = UIColorFromRGB(rgbValue: 0x0F52BA)
+        bodyWeightTargetLine.lineColor = UIColorFromRGB(rgbValue: 0x111E6C)
         lineChartView.rightAxis.addLimitLine(bodyFatTargetLine)
         lineChartView.leftAxis.addLimitLine(bodyWeightTargetLine)
         lineChartView.leftAxis.drawLimitLinesBehindDataEnabled = true
@@ -133,7 +133,11 @@ class LineChart: UIView, IAxisValueFormatter {
         lineChartView.rightAxis.enabled = true
         lineChartView.rightAxis.axisMaximum = chartData.dataSets[1].yMax + 10
         lineChartView.rightAxis.axisMinimum = 5.0
-        lineChartView.leftAxis.drawGridLinesEnabled = false
+        lineChartView.leftAxis.drawGridLinesEnabled = true
+        lineChartView.leftAxis.gridColor = UIColorFromRGB(rgbValue: 0x111E6C)
+        lineChartView.leftAxis.gridLineWidth = 1.5
+        lineChartView.rightAxis.gridLineWidth = 1.5
+        lineChartView.rightAxis.gridColor = UIColorFromRGB(rgbValue: 0x0F52BA)
         lineChartView.leftAxis.drawLabelsEnabled = true
         lineChartView.data = chartData
     }
