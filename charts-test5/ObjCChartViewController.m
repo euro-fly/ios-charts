@@ -35,7 +35,9 @@
     NSMutableArray* xAxisYearly;
     NSMutableArray* yAxisYearly1;
     NSMutableArray* yAxisYearly2;
-    
+    NSMutableArray* xAxisAllTime;
+    NSMutableArray* yAxisAllTime1;
+    NSMutableArray* yAxisAllTime2;
     
     __weak IBOutlet LineChart *myLineChart;
     __weak IBOutlet UISegmentedControl *myButtonSet;
@@ -54,6 +56,7 @@
     } else if(myButtonSet.selectedSegmentIndex == 2) {
         [self populateChartDataTwo];
     } else {
+        [self populateChartDataFour];
     }
     [self refreshChart];
 }
@@ -119,6 +122,10 @@
     yAxisYearly1 = [[NSMutableArray alloc] initWithObjects:@"50", @"59", @"52", @"50", @"50", @"56", @"57", @"60.7", @"58", @"51", @"51", @"51", nil];
     yAxisYearly2 = [[NSMutableArray alloc] initWithObjects:@"26", @"25", @"26", @"29", @"23", @"24", @"25", @"26", @"24", @"24", @"30", @"28", nil];
     
+    xAxisAllTime = [[NSMutableArray alloc] initWithObjects:@"1", @"0", nil];
+    yAxisAllTime1 = [[NSMutableArray alloc] initWithObjects:@"57", @"50", nil];
+    yAxisAllTime2 = [[NSMutableArray alloc] initWithObjects:@"29", @"23", nil];
+    
     // Do any additional setup after loading the view, typically from a nib.
     
     //[self.view addSubview:_myButton];
@@ -152,6 +159,11 @@
     xAxis = xAxisYearly;
     yAxis = [[NSMutableArray alloc] initWithObjects:yAxisYearly1, yAxisYearly2, nil];
     [self getChartData:xAxis values:yAxis];
+}
+
+- (void) populateChartDataFour {
+    xAxis = xAxisAllTime;
+    yAxis = [[NSMutableArray alloc] initWithObjects:yAxisAllTime1, yAxisAllTime2, nil];
 }
 
 - (void) lineChart {

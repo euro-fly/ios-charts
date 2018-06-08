@@ -45,6 +45,10 @@ import UIKit
             date = NSCalendar.current.date(byAdding: .day, value: Int((29 - value) * -1), to: NSDate() as Date) as Date!
             dateFormatter.dateFormat = "MM月dd日"
         }
+        else {
+            date = NSCalendar.current.date(byAdding: .year, value: Int((1 - value) * -3), to: NSDate() as Date) as Date!
+            dateFormatter.dateFormat = "YYYY年MM月dd日"
+        }
         return dateFormatter.string(from: date)
     }
     public func setValues(values: [String]) {
@@ -115,7 +119,7 @@ import UIKit
         lineChartView.xAxis.labelPosition = .bottom
         lineChartView.xAxis.drawGridLinesEnabled = false
         lineChartView.xAxis.valueFormatter = xAxis.valueFormatter
-        lineChartView.xAxis.setLabelCount(5, force: true)
+        lineChartView.xAxis.setLabelCount(min(5, chartData.dataSets[0].entryCount), force: true)
         lineChartView.xAxis.labelTextColor = UIColor.gray
         lineChartView.xAxis.labelFont = UIFont(name: "Helvetica", size: 8)!
         lineChartView.rightAxis.drawLimitLinesBehindDataEnabled = true
