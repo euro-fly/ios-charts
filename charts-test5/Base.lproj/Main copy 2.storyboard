@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Va2-kN-off">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -64,13 +64,7 @@
                                             <rect key="frame" x="16" y="7" width="45" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Rotate"/>
-                                            <connections>
-                                                <action selector="rotate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IRh-Pa-zLo"/>
-                                            </connections>
                                         </button>
-                                        <connections>
-                                            <action selector="rotate:" destination="BYZ-38-t0r" id="CIz-5k-XcP"/>
-                                        </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" id="uyW-r9-wSV">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="VYz-A4-Pp6">
@@ -81,9 +75,6 @@
                                                 <action selector="updateChart:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N3q-tH-5mZ"/>
                                             </connections>
                                         </button>
-                                        <connections>
-                                            <action selector="update:" destination="BYZ-38-t0r" id="0hd-uW-z3t"/>
-                                        </connections>
                                     </barButtonItem>
                                 </items>
                             </toolbar>
@@ -156,9 +147,6 @@
                         <outlet property="fatLabel" destination="OjZ-zo-Lpp" id="yNG-g4-kgu"/>
                         <outlet property="myButtonSet" destination="omy-Z4-D8S" id="tsh-gb-1wf"/>
                         <outlet property="myLineChart" destination="63W-qL-ovu" id="lk3-uz-heu"/>
-                        <outlet property="myRotateButton" destination="OTq-Ch-2mI" id="tsI-Df-GVz"/>
-                        <outlet property="rotateButton" destination="Nvz-zR-zUR" id="lGO-6s-jn1"/>
-                        <outlet property="updateButton" destination="Nvz-zR-zUR" id="PLK-Og-j38"/>
                         <outlet property="weightLabel" destination="Zbo-eU-zka" id="0jy-fL-VLa"/>
                     </connections>
                 </viewController>

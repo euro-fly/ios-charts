@@ -6,31 +6,37 @@
 //  Copyright © 2018 Jacob. All rights reserved.
 //
 
+
+@import Charts;
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "charts_test5-Swift.h"
-@import Charts;
 
 
-@protocol GetChartData
-- (void) getChartData: (NSArray*)dataPoints values:(NSArray*)b;
+
+@protocol getChartData2
+
+@property NSArray* xAxis;
+@property NSArray* yAxis;
+
+- (void) getChartData: (NSArray*)dataPoints values:(NSArray*)values;
 @end
 
-@interface ObjCChartViewController :UIViewController <GetChartData>;
+@interface ObjCChartViewController :UIViewController <getChartData2>;
 @end
 
 @implementation ObjCChartViewController {
-    NSArray* xAxis;
-    NSArray* yAxis;
     NSArray* xAxisMonthly;
-    NSArray *yAxisMonthly1;
-    NSArray *yAxisMonthly2;
+    NSArray* yAxisMonthly1;
+    NSArray* yAxisMonthly2;
     NSArray* xAxisWeekly;
     NSArray* yAxisWeekly1;
     NSArray* yAxisWeekly2;
     NSArray* xAxisYearly;
     NSArray* yAxisYearly1;
     NSArray* yAxisYearly2;
+    
+    
     __weak IBOutlet LineChart *myLineChart;
     __weak IBOutlet UISegmentedControl *myButtonSet;
     __weak IBOutlet UILabel *weightLabel;
@@ -67,6 +73,10 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     //[self.view addSubview:_myButton];
+    
+    [self.view addSubview:myLineChart];
+    [self populateChartDataThree];
+    [self lineChart];
 }
 
 - (void) refreshChart {
@@ -76,27 +86,38 @@
 
 - (void) populateChartData {
     xAxis = xAxisMonthly;
-    yAxis = [[NSArray init] initWithObjects:yAxisMonthly1, yAxisMonthly2, nil];
+    yAxis = [[NSArray alloc] initWithObjects:yAxisMonthly1, yAxisMonthly2, nil];
+    [self getChartData:xAxis values:yAxis];
 }
 
 - (void) populateChartDataTwo {
     xAxis = xAxisWeekly;
-    yAxis = [[NSArray init] initWithObjects:yAxisWeekly1, yAxisWeekly2, nil];
+    yAxis = [[NSArray alloc] initWithObjects:yAxisWeekly1, yAxisWeekly2, nil];
+    [self getChartData:xAxis values:yAxis];
 }
 
 - (void) populateChartDataThree {
     xAxis = xAxisYearly;
-    yAxis = [[NSArray init] initWithObjects:yAxisYearly1, yAxisYearly2, nil];
+    yAxis = [[NSArray alloc] initWithObjects:yAxisYearly1, yAxisYearly2, nil];
+    [self getChartData:xAxis values:yAxis];
 }
 
 - (void) lineChart {
+    myLineChart.delegate = self;
+    BalloonMarker *marker = [[BalloonMarker alloc] initWithColor:UIColor.blackColor font:[UIFont fontWithName:@"Helvetica" size:12.0] textColor:UIColor.blackColor insets:UIEdgeInsetsZero];
+    marker.minimumSize = CGSizeMake(1.0, 35.0);
+    myLineChart.lineChartView.marker = marker;
+    marker.chartView = myLineChart.lineChartView;
+    marker.chartViewController = self;
+    
     
 }
 - (IBAction)rotate:(id)sender {
 }
 
 - (void) updateLabel: (NSString*)weight fat:(NSString*)fat {
-    
+    weightLabel.text = weight;
+    fatLabel.text = fat;
 }
 
 - (IBAction)update:(id)sender {
@@ -109,8 +130,14 @@
 
 
 - (void)getChartData: (NSArray*)dataPoints values:(NSArray*)values {
-    
+    self.xAxis = dataPoints;
+    self.yAxis = values;
 }
 
+
+
+@synthesize xAxis;
+
+@synthesize yAxis;
 
 @end

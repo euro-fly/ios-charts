@@ -137,12 +137,12 @@ protocol GetChartData {
     }
     
     func lineChart() {
-        myLineChart.delegate = self
+        //myLineChart.delegate = self
         let marker: BalloonMarker = BalloonMarker(color: UIColor.black, font: UIFont(name: "Helvetica", size: 12.0)!, textColor: UIColor.black, insets: UIEdgeInsetsMake(0,0,0,0))
         marker.minimumSize = CGSize(width: 1.0, height: 35.0)
         myLineChart.lineChartView.marker = marker
         marker.chartView = myLineChart.lineChartView
-        marker.chartViewController = self
+        //marker.chartViewController = self
     }
     
     func updateLabel(weight: String, fat: String) {

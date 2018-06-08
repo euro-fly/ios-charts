@@ -87,6 +87,7 @@
 		1607457520BFC097009F292D /* charts-test5UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "charts-test5UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1607457920BFC097009F292D /* charts_test5UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = charts_test5UITests.m; sourceTree = "<group>"; };
 		1607457B20BFC097009F292D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		167064E820CA175D00795A08 /* ObjCChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjCChartViewController.h; sourceTree = "<group>"; };
 		16DCD38420BFC34B00466B9C /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "Charts-master/Charts.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		16DCD39220BFC37A00466B9C /* charts-test5-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "charts-test5-Bridging-Header.h"; sourceTree = "<group>"; };
 		16DCD39320BFC37A00466B9C /* LineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
@@ -161,6 +162,7 @@
 				1607456320BFC097009F292D /* Info.plist */,
 				1607456420BFC097009F292D /* main.m */,
 				16EDC6FA20C90A0900456769 /* ObjCChartViewController.m */,
+				167064E820CA175D00795A08 /* ObjCChartViewController.h */,
 				16DCD39320BFC37A00466B9C /* LineChartView.swift */,
 				16DCD39520BFC3F600466B9C /* ChartViewController.swift */,
 				16DCD39220BFC37A00466B9C /* charts-test5-Bridging-Header.h */,

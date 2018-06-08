@@ -51,19 +51,19 @@ import UIKit
         self.xAxis = values
     }
 
-    var delegate: GetChartData! {
+    @objc var delegate: getChartData2! {
         didSet {
             populateData()
             lineChartSetup()
         }
     }
     
-    func populateData() {
-        xAxis = delegate.xAxis
-        yAxis = delegate.yAxis
+    @objc func populateData() {
+        xAxis = delegate.xAxis as! [String]
+        yAxis = delegate.yAxis as! [[String]]
     }
     
-    func lineChartSetup() {
+    @objc func lineChartSetup() {
         self.backgroundColor = UIColor.white
         self.addSubview(lineChartView)
         lineChartView.translatesAutoresizingMaskIntoConstraints = false
@@ -75,7 +75,7 @@ import UIKit
         setLineChart(dataPoints: xAxis, values: yAxis)
     }
     
-    func setLineChart(dataPoints: [String], values: [[String]]) {
+    @objc func setLineChart(dataPoints: [String], values: [[String]]) {
         lineChartView.noDataTextColor = UIColor.white
         lineChartView.noDataText = "NO DATA"
         lineChartView.backgroundColor = UIColor.white
@@ -142,7 +142,7 @@ import UIKit
         lineChartView.data = chartData
     }
     
-    func removeLimitLine() {
+    @objc func removeLimitLine() {
         lineChartView.rightAxis.removeAllLimitLines()
         lineChartView.leftAxis.removeAllLimitLines()
     }

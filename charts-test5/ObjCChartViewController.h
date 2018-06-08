@@ -16,10 +16,12 @@
 @import Charts;
 #import <UIKit/UIKit.h>
 
-@protocol GetChartData
+@protocol getChartData2
+@property NSArray* xAxis;
+@property NSArray* yAxis;
+- (void) getChartData: (NSArray*)dataPoints values:(NSArray*)values;
+@end
 
-
-@interface ObjCChartViewController : UIViewController, GetChartData
-- 
-
+@interface ObjCChartViewController : UIViewController <getChartData2>;
+- (void) updateLabel: (NSString*)weight fat:(NSString*)fat;
 @end

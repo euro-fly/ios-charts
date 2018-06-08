@@ -4,7 +4,7 @@ import UIKit
 import Charts
 
 
-open class BalloonMarker: MarkerImage
+@objc open class BalloonMarker: MarkerImage
 {
     open var color: UIColor?
     open var arrowSize = CGSize(width: 15, height: 11)
@@ -16,7 +16,7 @@ open class BalloonMarker: MarkerImage
     open var bodyWeight: String? = "0.0"
     open var bodyFat: String? = "0.0"
     
-    var chartViewController: ChartViewController?
+    var chartViewController: ObjCChartViewController?
     
     
     fileprivate var label: String?
@@ -24,7 +24,7 @@ open class BalloonMarker: MarkerImage
     fileprivate var _paragraphStyle: NSMutableParagraphStyle?
     fileprivate var _drawAttributes = [String : AnyObject]()
     
-    public init(color: UIColor, font: UIFont, textColor: UIColor, insets: UIEdgeInsets)
+    @objc public init(color: UIColor, font: UIFont, textColor: UIColor, insets: UIEdgeInsets)
     {
         super.init()
         
@@ -96,7 +96,7 @@ open class BalloonMarker: MarkerImage
         bodyFat = String("\(setEntry2?.y ?? 0.0)%")
         setLabel(String("体量：\(setEntry1?.y ?? 0.0)kg\n 体脂肪率：\(setEntry2?.y ?? 0.0)%"))
         
-        chartViewController?.updateLabel(weight: bodyWeight!, fat: bodyFat!)
+        chartViewController?.updateLabel(bodyWeight, fat: bodyFat)
     }
     
     open func getLabel() -> String? {
