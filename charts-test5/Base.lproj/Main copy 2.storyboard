@@ -105,6 +105,7 @@
                                             </connections>
                                         </button>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="XDZ-jC-Jtr"/>
                                     <barButtonItem style="plain" id="uyW-r9-wSV">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="VYz-A4-Pp6">
                                             <rect key="frame" x="308" y="7" width="51" height="30"/>
