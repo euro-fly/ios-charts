@@ -110,7 +110,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    xAxisMonthly = [[NSMutableArray alloc] initWithObjects:@"29", @"28", @"27", @"26", @"25", @"24", @"23", @"22", @"21", @"20", @"19", @"18", @"17", @"16", @"15", @"14", @"13", @"12", @"11", @"10", @"9", @"8", @"7", @"6", @"5", @"4", @"3", @"2", @"1", @"0", nil];
+    xAxisMonthly = [[NSMutableArray alloc] initWithObjects:@"0", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"11", @"12", @"13", @"14", @"15", @"16", @"17", @"18", @"19", @"20", @"21", @"22", @"23", @"24", @"25", @"26", @"27", @"28", @"29", @"30", nil];
     yAxisMonthly1 = [[NSMutableArray alloc] initWithObjects: @"56.2", @"56.4", @"54.2", @"56.7", @"54.5", @"53.1", @"59.4", @"51", @"58", @"56", @"50", @"58", @"55", @"56", @"50", @"58", @"59", @"51", @"58", @"51", @"53", @"52", @"56", @"56", @"52", @"52", @"59", @"53", @"55", @"52", nil];
     yAxisMonthly2 = [[NSMutableArray alloc] initWithObjects: @"23", @"26", @"29", @"28", @"25", @"28", @"21", @"24", @"22", @"26", @"22", @"23", @"21", @"23", @"22", @"22", @"29", @"22", @"26", @"22", @"22", @"23", @"20", @"23", @"28", @"25", @"24", @"24", @"27", @"24", nil];
     
@@ -118,7 +118,7 @@
     yAxisWeekly1 = [[NSMutableArray alloc] initWithObjects:@"54", @"52", @"52", @"54", @"57", @"57", @"50", nil];
     yAxisWeekly2 = [[NSMutableArray alloc] initWithObjects:@"23", @"24", @"21", @"21", @"25", @"29", @"29", nil];
     
-    xAxisYearly = [[NSMutableArray alloc] initWithObjects:@"11", @"10", @"9", @"8", @"7", @"6", @"5", @"4", @"3", @"2", @"1", @"0", nil];
+    xAxisYearly = [[NSMutableArray alloc] initWithObjects:@"0", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"11", nil];
     yAxisYearly1 = [[NSMutableArray alloc] initWithObjects:@"50", @"59", @"52", @"50", @"50", @"56", @"57", @"60.7", @"58", @"51", @"51", @"51", nil];
     yAxisYearly2 = [[NSMutableArray alloc] initWithObjects:@"26", @"25", @"26", @"29", @"23", @"24", @"25", @"26", @"24", @"24", @"30", @"28", nil];
     

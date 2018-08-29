@@ -38,11 +38,14 @@ import UIKit
         }
         else if (xAxis.count == 12) // if it's a yearly view
         {
-            date = NSCalendar.current.date(byAdding: .month, value: Int((11 - value) * -1), to: NSDate() as Date) as Date!
+            date = NSCalendar.current.date(byAdding: .month, value: Int(value), to: NSDate() as Date) as Date!
             dateFormatter.dateFormat = "MM月"
         }
         else if (xAxis.count == 30) {
-            date = NSCalendar.current.date(byAdding: .day, value: Int((29 - value) * -1), to: NSDate() as Date) as Date!
+            let calendar = NSCalendar.current()
+            let components = calendar.components([.Year, .Month], fromDate: date)
+            let startOfMonth = calendar.dateFromComponents(components)!
+            date = NSCalendar.current.date(byAdding: .day, value: Int(value), to: NSDate() as Date) as Date!
             dateFormatter.dateFormat = "MM月dd日"
         }
         else {

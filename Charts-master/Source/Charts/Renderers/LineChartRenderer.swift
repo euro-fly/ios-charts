@@ -390,7 +390,7 @@ open class LineChartRenderer: LineRadarRenderer
                     e1 = dataSet.entryForIndex(x == 0 ? 0 : (x - 1))
                     e2 = dataSet.entryForIndex(x)
                     
-                    if e1 == nil || e2 == nil { continue }
+                    if e1 == nil || e2 == nil || e1.y == 0.0 || e2.y == 0.0 { continue }
                     
                     let pt = CGPoint(
                         x: CGFloat(e1.x),
@@ -644,8 +644,10 @@ open class LineChartRenderer: LineRadarRenderer
                     break
                 }
                 
+                //TODO: don't draw the circle if there is no value...
+                
                 // make sure the circles don't do shitty things outside bounds
-                if (!viewPortHandler.isInBoundsLeft(pt.x) || !viewPortHandler.isInBoundsY(pt.y))
+                if (!viewPortHandler.isInBoundsLeft(pt.x) || !viewPortHandler.isInBoundsY(pt.y) || e.y == 0.0)
                 {
                     continue
                 }
